@@ -1,0 +1,111 @@
+<h1 style="margin-bottom:20px; font-family: Arial;">Vuelos</h1>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+  }
+
+  thead {
+    background: #1976d2;
+    color: white;
+  }
+
+  th, td {
+    padding: 14px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+  }
+
+  tr:hover {
+    background: #f7f9fc;
+  }
+
+  .flight-box {
+    background: #e8f1ff;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #1976d2;
+  }
+
+  .flight-route {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .flight-extra {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.4;
+  }
+
+  .status-available {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #4caf50;
+    color: white;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .status-unavailable {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #e53935;
+    color: white;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+</style>
+
+<table>
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Ruta</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Aerolínea</th>
+      <th>Precio</th>
+      <th>Capacidad</th>
+      <th>Disponibles</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each flights}}
+      <tr>
+        <td>{{code}}</td>
+
+        <td>
+          <div class="flight-box">
+            <div class="flight-route">
+              {{origin}} → {{destination}}
+            </div>
+          </div>
+        </td>
+
+        <td>{{date}}</td>
+        <td>{{time}}</td>
+        <td>{{airline}}</td>
+        <td>${{price}}</td>
+        <td>{{capacity}}</td>
+        <td>{{seatsAvailable}}</td>
+
+        <td>
+          {{#if available}}
+            <span class="status-available">Disponible</span>
+          {{else}}
+            <span class="status-unavailable">No disponible</span>
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

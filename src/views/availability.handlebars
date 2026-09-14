@@ -1,0 +1,87 @@
+<h1 style="margin-bottom:20px;">Tickets</h1>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+
+  thead {
+    background: #1e88e5;
+    color: white;
+  }
+
+  th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+
+  tr:hover {
+    background: #f5f5f5;
+  }
+
+  .flight-box {
+    background: #e3f2fd;
+    padding: 8px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    border-left: 4px solid #1e88e5;
+  }
+
+  .flight-route {
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  .flight-extra {
+    font-size: 13px;
+    color: #555;
+  }
+</style>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Email</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Estado</th>
+      <th>Vuelos</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each tickets}}
+      <tr>
+        <td>{{clientName}}</td>
+        <td>{{clientEmail}}</td>
+        <td>{{date}}</td>
+        <td>{{time}}</td>
+        <td>{{status}}</td>
+
+        <td>
+          {{#each flights}}
+            <div class="flight-box">
+              <div class="flight-route">
+                {{this.flight.origin}} → {{this.flight.destination}}
+              </div>
+
+              <div class="flight-extra">
+                Código: {{this.flight.code}}  
+                <br>
+                Aerolínea: {{this.flight.airline}}
+                <br>
+                Precio: ${{this.flight.price}}
+                <br>
+                Cantidad: x{{this.quantity}}
+              </div>
+            </div>
+          {{/each}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

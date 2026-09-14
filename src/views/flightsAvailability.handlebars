@@ -1,0 +1,46 @@
+<h1>Tickets</h1>
+
+{{#if tickets.length}}
+  <table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Email</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Estado</th>
+        <th>Vuelos</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each tickets}}
+        <tr>
+          <td>{{clientName}}</td>
+          <td>{{clientEmail}}</td>
+          <td>{{date}}</td>
+          <td>{{time}}</td>
+          <td>{{status}}</td>
+
+          <td>
+            <ul>
+              {{#each flights}}
+                <li>
+                  <strong>{{flight.code}}</strong> — {{flight.airline}}  
+                  <br>
+                  Origen: {{flight.origin}}
+                  <br>
+                  Destino: {{flight.destination}}
+                  <br>
+                  Cantidad: {{quantity}}
+                </li>
+              {{/each}}
+            </ul>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p>No hay tickets registrados.</p>
+{{/if}}
