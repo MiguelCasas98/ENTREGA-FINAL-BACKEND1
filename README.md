@@ -4,6 +4,12 @@ Proyecto backend desarrollado en Node.js + Express utilizando ESM (import/export
 Permite administrar vuelos y reservas, incluyendo la asignación de vuelos a cada reserva y el manejo de cantidades.
 
 La persistencia fue migrada desde archivos JSON hacia MongoDB Atlas utilizando Mongoose, manteniendo el funcionamiento original de la API.
+
+## Nota sobre el dominio del proyecto
+
+Este proyecto interpreta el dominio de "servicios" solicitado en la consigna como los **vuelos ofrecidos por una aerolínea**. Es decir, cada `Flight` (vuelo) representa un servicio disponible para reservar, y cada `Ticket` (reserva) es la asociación de uno o más servicios (vuelos) a un cliente, con su respectiva `quantity` (cantidad de pasajes).
+
+Esta decisión de diseño busca aplicar los conceptos pedidos (CRUD de servicios, relación mediante `ObjectId`, `populate`, filtros/paginación/ordenamiento, etc.) en un caso de uso realista de una empresa aérea, manteniendo toda la funcionalidad requerida por la consigna bajo esta nomenclatura de dominio.
 ---
 
 # Arquitectura del Proyecto
